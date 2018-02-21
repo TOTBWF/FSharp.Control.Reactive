@@ -25,7 +25,7 @@ let gitHome = "git@github.com:fsprojects"
 let gitName = "FSharp.Control.Reactive"
 let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/fsprojects"
 
-let buildDir = "bin"
+let buildDir = Path.Combine(Environment.CurrentDirectory, "bin")
 
 
 // --------------------------------------------------------------------------------------
@@ -97,29 +97,13 @@ Target "RunTests" (fun _ ->
 // Build a NuGet package
 
 Target "Pack" (fun _ ->
-    (*
-    Paket.Pack (fun p ->
-        { p with
-            Version = nugetVersion
-            OutputPath = buildDir
-            ReleaseNotes = toLines release.Notes
-            TemplateFile = "paket.template" })
-
-    Paket.Pack (fun p ->
-        { p with
-            Version = release.NugetVersion
-            OutputPath = buildDir
-            ReleaseNotes = toLines release.Notes
-            TemplateFile = "paket.testing.template" })
-    *)
     DotNetCli.Pack (fun p ->
         { p with
             Project = projectSource
-            Configuration = "Release"
-            VersionSuffix = buildVersion
             OutputPath = buildDir
             AdditionalArgs =
               [ "--no-build"
+                sprintf "/p:Version=%s" release.NugetVersion
                 //"/p:ReleaseNotes=" + (toLines release.Notes)
               ]
         })
@@ -127,11 +111,11 @@ Target "Pack" (fun _ ->
     DotNetCli.Pack (fun p ->
         { p with
             Project = projectTesting
-            Configuration = "Release"
-            VersionSuffix = buildVersion
             OutputPath = buildDir
             AdditionalArgs =
               [ "--no-build"
+                "--no-dependencies"
+                sprintf "/p:Version=%s" release.NugetVersion
                 //"/p:ReleaseNotes=" + (toLines release.Notes)
               ]
         })
