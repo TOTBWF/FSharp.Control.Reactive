@@ -97,7 +97,6 @@ Target "RunTests" (fun _ ->
 // Build a NuGet package
 
 Target "Pack" (fun _ ->
-    (*
     Paket.Pack (fun p ->
         { p with
             Version = nugetVersion
@@ -111,30 +110,6 @@ Target "Pack" (fun _ ->
             OutputPath = buildDir
             ReleaseNotes = toLines release.Notes
             TemplateFile = "paket.testing.template" })
-    *)
-    DotNetCli.Pack (fun p ->
-        { p with
-            Project = projectSource
-            Configuration = "Release"
-            VersionSuffix = buildVersion
-            OutputPath = buildDir
-            AdditionalArgs =
-              [ "--no-build"
-                //"/p:ReleaseNotes=" + (toLines release.Notes)
-              ]
-        })
-
-    DotNetCli.Pack (fun p ->
-        { p with
-            Project = projectTesting
-            Configuration = "Release"
-            VersionSuffix = buildVersion
-            OutputPath = buildDir
-            AdditionalArgs =
-              [ "--no-build"
-                //"/p:ReleaseNotes=" + (toLines release.Notes)
-              ]
-        })
 )
 
 Target "Push" (fun _ ->

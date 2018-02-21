@@ -11,6 +11,7 @@
     <PackageTags>F#;FSharp;Reactive Extensions;Rx</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <RepositoryUrl>https://github.com/fsprojects/FSharp.Control.Reactive</RepositoryUrl>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Observable.fs" />
