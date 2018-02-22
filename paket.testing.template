@@ -7,7 +7,7 @@ authors
     
 summary
     "A F#-friendly wrapper for the Reactive Extensions Testing.
-licenseurl https://github.com/fsprojects/FSharp.Control.Reactive/blob/master/LICENSE
+licenseurl https://github.com/fsprojects/FSharp.Control.Reactive/blob/master/LICENSE.txt
 projecturl https://github.com/fsprojects/FSharp.Control.Reactive
 iconurl http://fsprojects.github.io/FSharp.Control.Reactive/img/logo.png
 
@@ -19,7 +19,10 @@ dependencies
 excludedependencies
     FSharp.Core
 files
-    ./bin/v4.5/FSharp.Control.Reactive.Testing.dll ==> lib/net45
-    ./bin/v4.5/FSharp.Control.Reactive.Testing.XML ==> lib/net45
-    ./bin/v4.5/FSharp.Control.Reactive.Testing.?db ==> lib/net45
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/net45/FSharp.Control.Reactive.Testing.dll ==> lib/net45
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/net45/FSharp.Control.Reactive.Testing.XML ==> lib/net45
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/net45/FSharp.Control.Reactive.Testing.?db ==> lib/net45
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/netstandard2.0/FSharp.Control.Reactive.Testing.dll ==> lib/netstandard2.0
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/netstandard2.0/FSharp.Control.Reactive.Testing.XML ==> lib/netstandard2.0
+    ./src/FSharp.Control.Reactive.Testing/bin/Release/netstandard2.0/FSharp.Control.Reactive.Testing.?db ==> lib/netstandard2.0
 include-pdbs true
